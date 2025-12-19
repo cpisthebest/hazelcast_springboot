@@ -7,7 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class BookService {
-    @Cacheable(value="books" , key="#isbn")
+    @Cacheable(value="books" , keyGenerator="commonKeyGenerator")
     public String getBooksByIsbn(String isbn){
         try{
             TimeUnit.SECONDS.sleep(6);

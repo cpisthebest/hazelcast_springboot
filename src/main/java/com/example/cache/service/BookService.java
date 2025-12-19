@@ -7,7 +7,8 @@ import java.util.concurrent.TimeUnit;
 
 @Service
 public class BookService {
-    @Cacheable(value="books" , keyGenerator="commonKeyGenerator")
+//    @Cacheable(value="books" , key="#isbn")
+    @Cacheable(value="books" , key="#root.target.getKey() + #isbn")
     public String getBooksByIsbn(String isbn){
         try{
             TimeUnit.SECONDS.sleep(6);
@@ -16,5 +17,8 @@ public class BookService {
             ie.printStackTrace();
         }
         return "ISBN -> "+isbn;
+    }
+    public String getKey(){
+        return "1_";
     }
 }

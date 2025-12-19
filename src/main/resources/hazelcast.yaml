@@ -1,0 +1,12 @@
+hazelcast:
+  network:
+    join:
+      multicast:
+        enabled: true
+  map:
+    books:
+      time-to-live-seconds: 3600
+      max-idle-seconds: 600
+      eviction:
+        eviction-policy: LRU
+        max-size-policy: FREE_HEAP_SIZE
